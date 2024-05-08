@@ -1,22 +1,19 @@
-# Refer https://docs.halo.run/developer-guide/plugin/basics/manifest
-
 apiVersion: plugin.halo.run/v1alpha1
 kind: Plugin
 metadata:
-  # The name defines how the plugin is invoked, A unique name
-  name: starter
+  name: trailing-slash
 spec:
   enabled: true
-  requires: ">=2.11.0"
+  requires: ">=2.13.0"
   author:
     name: Halo
     website: https://github.com/halo-dev
-  logo: logo.png
-  homepage: https://github.com/halo-dev/plugin-starter#readme
-  repo: https://github.com/halo-dev/plugin-starter
-  issues: https://github.com/halo-dev/plugin-starter/issues
-  displayName: "插件快速开始模板"
-  description: "这是一个插件快速开始模板"
+  logo: logo.svg
+  homepage: https://github.com/halo-sigs/plugin-trailing-slash#readme
+  repo: https://github.com/halo-sigs/plugin-trailing-slash
+  issues: https://github.com/halo-sigs/plugin-trailing-slash/issues
+  displayName: "Trailing Slash"
+  description: "重写请求去除尾部斜杠，以保证 URL 规范化, 例如: /path/ -> /path"
   license:
     - name: "GPL-3.0"
-      url: "https://github.com/halo-dev/plugin-starter/blob/main/LICENSE"
+      url: "https://github.com/halo-sigs/plugin-trailing-slash/blob/main/LICENSE"

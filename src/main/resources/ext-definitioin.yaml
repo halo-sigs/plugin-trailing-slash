@@ -1,0 +1,11 @@
+apiVersion: plugin.halo.run/v1alpha1
+kind: ExtensionDefinition
+metadata:
+  name: trailing-slash-redirect-filter
+  labels:
+    auth.halo.run/extension-point-name: "additional-webfilter"
+spec:
+  className: run.halo.router.TrailingSlashRedirectFilter
+  extensionPointName: additional-webfilter
+  displayName: "TrailingSlashRedirectFilter"
+  description: "Redirects requests with trailing slashes to the same URL without the trailing slash."
