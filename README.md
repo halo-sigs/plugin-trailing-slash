@@ -1,5 +1,5 @@
 <div align="center" style="text-align: center">
-    <img alt="logo" width="96px" src="src/main/resources/logo.svg">
+    <img alt="logo" width="96px" src="src/main/resources/logo.svg" style="border-radius: 15px">
     <h1>Trailing Slash</h1>
     <p>重写请求去除尾部斜杠，以保证 URL 规范化, 例如: /path/ -> /path</p>
     <p align="center" style="text-align: center">
