@@ -14,5 +14,5 @@ jobs:
     permissions:
       contents: write
     with:
-      app-id: 'unknown'
+      app-id: 'app-KOQzV'
       skip-node-setup: true
