@@ -1,76 +1,29 @@
-# plugin-starter
+## 简介
 
-Halo 2.0 插件开发快速开始模板。
+`Trailing Slash` 插件用于处理请求 URL 尾部斜杠问题。在 Spring Framework 3.0
+及以上版本中，[尾部斜杠的路由支持被弃用](https://github.com/spring-projects/spring-framework/issues/28552)
+，可能导致一些低版本 Halo 或者从其他应用如 Wordpress 等迁移过来的数据的请求路径无法正确处理。该插件旨在通过重写请求路径，移除
+URL 尾部的斜杠，使其能够被正确匹配和处理。
 
-## 开发环境
+## 问题背景
 
-插件开发的详细文档请查阅：<https://docs.halo.run/developer-guide/plugin/introduction>
+在 Spring Framework 3.0 之前，框架对 URL 尾部斜杠的路由进行了较宽松的处理。如果一个路由定义为 `/example`，访问 `/example/`
+也能成功匹配并返回结果。然而，从 Spring Framework 3.0 开始，为了提高路由规则的一致性和准确性，框架不再支持尾部斜杠的自动匹配行为。
+这导致一些依赖尾部斜杠的用户在升级到 Halo 2.x 后出现 404 错误。
 
-所需环境：
+## 插件解决方案
 
-1. Java 17
-2. Node 18
-3. pnpm 8
-4. Docker (可选)
+`Trailing Slash` 插件通过拦截请求 URL，并移除尾部的斜杠，使请求能够与定义的路由匹配。它适用于以下场景：
 
-克隆项目：
+- **兼容性**：保持旧版本 Halo 在升级到 Halo 2.x 或者从其他应用迁移到 Halo 2.x 后仍然能够处理带尾部斜杠的请求。
+- **一致性**：统一路由风格，使所有路由都保持一致的 URL 结构。
 
-```bash
-git clone git@github.com:halo-sigs/plugin-starter.git
+### 插件功能
 
-# 或者当你 fork 之后
+- **尾部斜杠处理**：自动移除请求 URL 中的尾部斜杠
+- **主题端过滤**：作为主题端 WebFilter 适用于所有主题端请求路径(`/apis`,`/api` 开头的请求除外)
 
-git clone git@github.com:{your_github_id}/plugin-starter.git
-```
+## 使用建议
 
-```bash
-cd path/to/plugin-starter
-```
-
-### 运行方式 1（推荐）
-
-> 此方式需要本地安装 Docker
-
-```bash
-# macOS / Linux
-./gradlew pnpmInstall
-
-# Windows
-./gradlew.bat pnpmInstall
-```
-
-```bash
-# macOS / Linux
-./gradlew haloServer
-
-# Windows
-./gradlew.bat haloServer
-```
-
-执行此命令后，会自动创建一个 Halo 的 Docker 容器并加载当前的插件，更多文档可查阅：<https://docs.halo.run/developer-guide/plugin/basics/devtools>
-
-### 运行方式 2
-
-> 此方式需要使用源码运行 Halo
-
-编译插件：
-
-```bash
-# macOS / Linux
-./gradlew build
-
-# Windows
-./gradlew.bat build
-```
-
-修改 Halo 配置文件：
-
-```yaml
-halo:
-  plugin:
-    runtime-mode: development
-    fixedPluginPath:
-      - "/path/to/plugin-starter"
-```
-
-最后重启 Halo 项目即可。
+尽管该插件可以帮助解决尾部斜杠问题，但从长期来看，不建议在生产环境中依赖尾部斜杠路由。
+为了获得更好的兼容性和可维护性，建议逐步过渡到标准化的无尾部斜杠路由风格。
