@@ -1,8 +1,8 @@
-<div style="text-align: center">
+<div align="center" style="text-align: center">
     <img alt="logo" width="96px" src="src/main/resources/logo.svg">
     <h1>Trailing Slash</h1>
     <p>重写请求去除尾部斜杠，以保证 URL 规范化, 例如: /path/ -> /path</p>
-    <p style="text-align: center">
+    <p align="center" style="text-align: center">
         <a href="https://www.halo.run/store/apps/app-KOQzV?tab=readme"><img alt="Halo App Store" src="https://img.shields.io/badge/Halo-%E5%BA%94%E7%94%A8%E5%B8%82%E5%9C%BA-%230A81F5?style=flat-square&logo=appstore&logoColor=%23fff" /></a>
         <a href="https://github.com/halo-sigs/plugin-trailing-slash/releases"><img alt="GitHub Release" src="https://img.shields.io/github/v/release/halo-sigs/plugin-trailing-slash?style=flat-square&logo=github" /></a>
         <a href="https://github.com/halo-sigs/plugin-trailing-slash/actions/workflows/ci.yaml"><img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/halo-sigs/plugin-trailing-slash/ci.yaml?style=flat-square&label=build" /></a>
